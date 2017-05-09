@@ -1,0 +1,23 @@
+下面都是非常实用的代码或者pattern, 值得好好写:
+
+1. decimal numbers
+2. phone numbers
+3. emails
+4. html
+5. match specific filenames
+6. trimming whitespace from start to end
+7. parse data from url/log
+
+可能还有更好的写法, 循序渐进吧.
+
+<TODO> at 2017-5-9
+
+
+
+--------------------------------------------
+一个简单的邮箱匹配:
+[0-9a-zA-Z_.]+[^.]+\@[a-zA-Z0-9]+\.[a-zA-Z]
+
+merlin.yu@xxx.com
+merlin.@xxx.com
+-------------------------------------------

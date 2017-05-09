@@ -1,0 +1,67 @@
+正则表达式理论上可以分为两类:
+1. 基础正则表达式 (basic regular express) BRE
+2. 扩展正则表达式 (extend regular express) ERE
+
+但是当你看man手册: "man 7 regex" 会发现, 其实还有别的分类:
+
+```
+Regular  expressions ("RE"s), as defined in POSIX.2, come in two forms: modern REs (roughly those of egrep; POSIX.2 calls these "extended" REs) and obsolete REs
+       (roughly those of ed(1); POSIX.2 "basic" REs).  Obsolete REs mostly exist for backward compatibility in some old programs; they will be discussed  at  the  end.
+       POSIX.2  leaves some aspects of RE syntax and semantics open; "(!)" marks decisions on these aspects that may not be fully portable to other POSIX.2 implementa‐
+       tions.
+
+```
+
+说的都是兼容性和扩展性问题, 还是按照BRE和ERE来分类吧.
+
+
+
+ERE就是扩展了正则表达式, 支持更多的字符, 大致有: + ? | 和 ().
+也就是说说, 原来在BRE里面没有特殊意义的, 在ERE里面具有特殊意义.
+(换句话说, 如果你用仅支持BRE的命令书写扩展的符号, 那么, 上面那些括号啊, 中括号啊等都要加上转义标致"\")
+
+
+我学习的时候, 是直接使用ERE的, 所以下面也就主要针对扩展的regex进行讲解和练习.
+
+大致上要学习的符号如下:(但是要用好不是那么容易的, 而且容易忘记, 所以记得经常查表)
+
+
+abc…	Letters
+123…	Digits
+\d	Any Digit
+\D	Any Non-digit character
+.	Any Character
+\.	Period
+[abc]	Only a, b, or c
+[^abc]	Not a, b, nor c
+[a-z]	Characters a to z
+[0-9]	Numbers 0 to 9
+\w	Any Alphanumeric character
+\W	Any Non-alphanumeric character
+{m}	m Repetitions
+{m,n}	m to n Repetitions
+*	Zero or more repetitions
++	One or more repetitions
+?	Optional character
+\s	Any Whitespace
+\S	Any Non-whitespace character
+^…$	Starts and ends
+(…)	Capture Group
+(a(bc))	Capture Sub-group
+(.*)	Capture all
+(abc|def)	Matches abc or def
+
+
+
+(后面分类学习和练习)
+
+举个简单的例子:
+#查找空行
+grep -E "^$" test.txt | wc -l    
+
+
+#查找某一个单(test)
+grep -E "\<test\>"
+
+
+可以参考一下, category.sh
