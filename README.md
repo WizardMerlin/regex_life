@@ -52,7 +52,7 @@
 	
 	7.常用场景的练习    ---  practice.sh
 	
-	8.编程语言支持      ---  language.sh
+	8.编程语言支持.md      ---  language.sh
 
 
 
